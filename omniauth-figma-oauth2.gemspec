@@ -1,11 +1,11 @@
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
-require "omniauth-figma-oauth2/version"
+require "omniauth-figma/version"
 
 Gem::Specification.new do |spec|
   spec.name = "omniauth-figma-oauth2"
-  spec.version = Omniauth::FigmaOauth2::VERSION
+  spec.version = Omniauth::Figma::VERSION
   spec.authors = ["Philipp Riedel"]
   spec.email = ["riedel.philipp@gmx.net"]
   spec.summary = "Figma OAuth2 strategy for OmniAuth"

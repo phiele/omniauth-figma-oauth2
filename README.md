@@ -11,6 +11,7 @@ A Figma OAuth2 strategy for OmniAuth.
 Add this line to your application's Gemfile:
 
     gem 'omniauth-figma-oauth2'
+    gem 'omniauth-rails_csrf_protection'
 
 And then execute:
 
@@ -34,6 +35,15 @@ end
 ```
 
 You can now access the OmniAuth Figma OAuth2 URL: `/auth/figma`.
+
+Make sure that all links to /auth/figma use POST requests. For example:
+```ruby
+link_to 'Sign in via Figma', '/auth/figma', method: :post
+# or
+button_to 'Sign in via Figma', '/auth/figma'
+```
+
+For more info check: https://github.com/omniauth/omniauth/wiki/Resolving-CVE-2015-9284
 
 
 ## Auth Hash

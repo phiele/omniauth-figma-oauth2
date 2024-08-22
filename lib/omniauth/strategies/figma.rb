@@ -2,9 +2,9 @@ require 'omniauth-oauth2'
 
 module OmniAuth
   module Strategies
-    class FigmaOauth2 < OmniAuth::Strategies::OAuth2
+    class Figma < OmniAuth::Strategies::OAuth2
 
-      option :name, 'figma_oauth2'
+      option :name, 'figma'
       option :scope, 'file_read'
 
       option :client_options, {
