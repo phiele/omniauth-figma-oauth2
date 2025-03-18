@@ -5,18 +5,17 @@ module OmniAuth
     class Figma < OmniAuth::Strategies::OAuth2
 
       option :name, 'figma'
-      option :scope, 'file_read'
-
+      option :scope, 'files:read' # use 'files:read' instead of 'file_read' (check: https://www.figma.com/developers/api#authentication-scopes)
       option :client_options, {
-        site:           'https://www.figma.com',
-        authorize_url:  '/oauth',
-        token_url:      '/v1/oauth/token'
+        site: 'https://api.figma.com/v1/',
+        authorize_url: 'https://www.figma.com/oauth',
+        token_url: 'oauth/token',
+        auth_scheme: :basic_auth # Ensures credentials are sent in the Authorization header
       }
 
-      option :token_options, [:client_id, :client_secret]
-      option :token_params, { parse: :json }
 
       uid { raw_info['id'].to_s }
+
 
       info do
         {
@@ -25,6 +24,7 @@ module OmniAuth
           :image   => raw_info['img_url']
         }
       end
+
 
       credentials do
         {
@@ -35,9 +35,11 @@ module OmniAuth
         }
       end
 
+
       def raw_info
         @raw_info = access_token.get('https://api.figma.com/v1/me').parsed
       end
+
 
       def callback_url
         full_host + script_name + callback_path

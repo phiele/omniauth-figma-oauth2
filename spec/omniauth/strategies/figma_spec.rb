@@ -13,15 +13,15 @@ describe OmniAuth::Strategies::Figma do
 
   describe '#client' do
     it 'has correct Figma site' do
-      expect(subject.client.site).to eq('https://www.figma.com')
+      expect(subject.client.site).to eq('https://api.figma.com/v1/')
     end
 
     it 'has correct `authorize_url`' do
-      expect(subject.client.options[:authorize_url]).to eq('/oauth')
+      expect(subject.client.options[:authorize_url]).to eq('https://www.figma.com/oauth')
     end
 
     it 'has correct `token_url`' do
-      expect(subject.client.options[:token_url]).to eq('/v1/oauth/token')
+      expect(subject.client.options[:token_url]).to eq('oauth/token')
     end
   end
 
