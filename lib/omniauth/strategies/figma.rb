@@ -10,7 +10,7 @@ module OmniAuth
       option :client_options, {
         site:           'https://www.figma.com',
         authorize_url:  '/oauth',
-        token_url:      '/api/oauth/token'
+        token_url:      '/v1/oauth/token'
       }
 
       option :token_options, [:client_id, :client_secret]

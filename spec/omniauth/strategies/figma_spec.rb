@@ -21,7 +21,7 @@ describe OmniAuth::Strategies::Figma do
     end
 
     it 'has correct `token_url`' do
-      expect(subject.client.options[:token_url]).to eq('/api/oauth/token')
+      expect(subject.client.options[:token_url]).to eq('/v1/oauth/token')
     end
   end
 
