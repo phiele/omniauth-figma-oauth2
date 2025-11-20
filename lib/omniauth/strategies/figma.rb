@@ -5,7 +5,7 @@ module OmniAuth
     class Figma < OmniAuth::Strategies::OAuth2
 
       option :name, 'figma'
-      option :scope, 'files:read' # use 'files:read' instead of 'file_read' (check: https://www.figma.com/developers/api#authentication-scopes)
+      option :scope, 'file_content:read' # use 'file_content:read' instead of 'file_read' (check: https://developers.figma.com/docs/rest-api/scopes/)
       option :client_options, {
         site: 'https://api.figma.com/v1/',
         authorize_url: 'https://www.figma.com/oauth',
