@@ -30,7 +30,19 @@ This is an example that you might put into a Rails initializer at `config/initia
 
 ```ruby
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :figma, ENV['CLIENT_ID'], ENV['CLIENT_SECRET']
+  provider :figma, ENV['CLIENT_ID'], ENV['CLIENT_SECRET'],
+    scope: 'file_content:read'
+end
+```
+
+**Note:** You must specify the `scope` parameter with the permissions your app needs. Available scopes are documented in the [Figma REST API documentation](https://developers.figma.com/docs/rest-api/scopes/).
+
+### Example with Multiple Scopes
+
+```ruby
+Rails.application.config.middleware.use OmniAuth::Builder do
+  provider :figma, ENV['CLIENT_ID'], ENV['CLIENT_SECRET'],
+    scope: 'current_user:read file_comments:read file_content:read file_metadata:read file_versions:read projects:read'
 end
 ```
 
